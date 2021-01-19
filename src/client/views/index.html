@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel-App</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="">
+            <h1>Travel app</h1>
+        </div>
+
+    </header>
+
+    <main>
+        <section>
+            lol
+            <section>
+
+                <section class="evalute-result">
+                    <h2>Form Results:</h2>
+                    <div id="results">
+
+                        <h4>Polarity</h4>
+                        <label id="polarity"></label>
+                        <h4>Subjectivity</h4>
+                        <label id="subjectivity"></label>
+                        <h4>Confidence</h4>
+                        <label id="confidence"></label>
+                        <h4>Agreement</h4>
+                        <label id="agreement"></label>
+                        <h4>Irony</h4>
+                        <label id="irony"></label>
+                    </div>
+                </section>
+    </main>
+
+    <footer>
+        <p>made by amira @2021</p>
+    </footer>
+
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
