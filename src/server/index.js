@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 //data object endpoint
-projectData = {};
+let projectData = [];
 // Express to run server and routes
 const express = require("express");
 // Start up an instance of app
@@ -18,12 +18,39 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("dist"));
 // Spin up the server
-
-app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
+const fetch = require("node-fetch");
+app.listen(8000, () => {
+  console.log("Example app listening on port 8000!");
 });
 // Initialize all route with a callback function
-app.get("/", (request, response) => {
-  response.sendFile("dist/index.html");
+app.get("/allData", (req, res) => {
+  res.send(projectData);
 });
 
+app.post("/geoNamesData", (req, res) => {
+  let geoNObj = {
+    long: req.body.long,
+    lat: req.body.lat,
+  };
+  projectData.push(geoNObj);
+  console.log("projectData1", projectData);
+  res.status(200).send(projectData);
+});
+app.post("/weatherData", (req, res) => {
+  let weatherObj = {
+    high: req.body.high,
+    low: req.body.low,
+    description: req.body.description,
+  };
+  projectData.push(weatherObj);
+  console.log("projectData2", projectData);
+  res.status(200).send(projectData);
+});
+app.post("/pixbayData", (req, res) => {
+  let pixaObj = {
+    img: req.body.image,
+  };
+  projectData.push(pixaObj);
+  console.log("projectData3", projectData);
+  res.status(200).send(projectData);
+});

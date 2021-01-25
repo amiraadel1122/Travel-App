@@ -1,0 +1,66 @@
+@import "variables";
+body {
+  background-image: url("../assets/back.jpg");
+  background-size: cover;
+  display: block;
+  color: #fff;
+  font-family: "Amatic SC", cursive;
+  input{
+    outline: none;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "form"
+      "results";
+    background-color: #0000005e;
+    background-size: cover;
+    height: auto;
+  }
+  h1 {
+    font-size: 50px;
+  }
+  h2{
+      font-size: 40px;
+      margin: 0;
+  }
+  .form {
+    grid-area: form;
+   }
+
+
+.submit-results{
+    padding: 20px;
+    label{
+      font-size: 30px;
+    }
+    #trip-to{
+      font-size: 40px !important;
+      color: aqua;
+    }
+}
+.info{
+  color: $info-color;
+  font-size: 30px !important;
+}
+#forecast{
+  font-size: 30px !important;
+}
+}
+
+@media (min-width: 280px) and (max-width:768px){
+main{
+  display: grid;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr !important;
+  text-align: center;
+  font-size: 30px !important;
+}
+form {
+  label{
+    font-size: 25px !important;
+  }
+}
+}

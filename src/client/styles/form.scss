@@ -1,0 +1,19 @@
+@import "variables";
+
+form{
+    padding: 20px;
+    label{
+        font-size: 45px;
+    }
+    input[type="date"], input[type="text"] {
+        border: 1px solid grey;
+        border-radius: 10px;
+        width: 80%;
+        padding: 8px;
+      }
+      button[type="submit"] {
+        padding: 12px;
+        width: 86%;
+        cursor: pointer;
+      }
+}

@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
-  entry: "./src/client/js/index.js",
+  entry: "./src/client/index.js",
   output:{
     libraryTarget:'var',
     library:'Client'
@@ -24,6 +24,17 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options:{
+            name:'[name].[ext]',
+          }
+        },
+      ],
+      }
     ],
   },
   plugins: [

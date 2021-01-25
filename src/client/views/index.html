@@ -1,59 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel-App</title>
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <div class="">
-            <h1>Travel app</h1>
-        </div>
-
+      <div class="">
+        <h1>Travel app</h1>
+      </div>
     </header>
 
     <main>
-        <section>
-            lol
-            <section>
+      <form id="travel-form" class="form">
+        <div id="destination" class="mb10">
+          <label for="city">Enter your destination:</label>
+          <input type="text" name="city" id="city" />
+        </div>
 
-                <section class="evalute-result">
-                    <h2>Form Results:</h2>
-                    <div id="results">
-
-                        <h4>Polarity</h4>
-                        <label id="polarity"></label>
-                        <h4>Subjectivity</h4>
-                        <label id="subjectivity"></label>
-                        <h4>Confidence</h4>
-                        <label id="confidence"></label>
-                        <h4>Agreement</h4>
-                        <label id="agreement"></label>
-                        <h4>Irony</h4>
-                        <label id="irony"></label>
-                    </div>
-                </section>
+        <div id="departureDate" class="mb10">
+          <label for="departue">Enter your departure date:</label>
+          <input type="date" name="" id="departure" />
+        </div>
+        <div id="returnDate" class="mb10">
+          <label for="departue">Enter your return date:</label>
+          <input type="date" name="" id="return" />
+        </div>
+        <div id="findTrip">
+          <button type="submit" class="mt10" id="submitTrip">Find Trip</button>
+        </div>
+      </form>
+      <div class="submit-results">
+        <div class="card">
+          <div class="city-img">
+            <!-- <img src="../assets/back.jpg" alt="" width="200px" height="200px"> -->
+          </div>
+          <div class="trip-details">
+            <div class="weather">
+              <h2>The Trip to :</h2>
+              <div id="trip-to" class="info"></div>
+              <h2>departue date in:</h2>
+              <div id="dep-date" class="info"></div>
+              <h2>return date in:</h2>
+              <div id="ret-date" class="info"></div>
+              <h2>The forecast :</h2>
+              <div id="forecast" class="info"></div>
+              <label>High-Temp :</label>
+              <div id="high-temp" class="info"></div>
+              <label>Low-Temp :</label>
+              <div id="low-temp" class="info"></div>
+              <img id="city-image" width="200px" height="200px" />
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
-        <p>made by amira @2021</p>
+      <p>made by amira @2021</p>
     </footer>
 
-
     <script>
-        // Check that service workers are supported
-        if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
-        }
+      // Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>
