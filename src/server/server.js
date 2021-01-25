@@ -48,9 +48,12 @@ app.post("/weatherData", (req, res) => {
 });
 app.post("/pixbayData", (req, res) => {
   let pixaObj = {
-    img: req.body.image,
+    image: req.body.image,
   };
   projectData.push(pixaObj);
   console.log("projectData3", projectData);
   res.status(200).send(projectData);
 });
+
+
+// module.exports = server;

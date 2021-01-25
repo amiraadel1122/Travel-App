@@ -2,6 +2,8 @@
 
 
 It is a website that obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.
+
+_ Show length of trip
 ***
 **What is included in the project :-**
 
@@ -12,6 +14,12 @@ It is a website that obtains a desired trip location & date from the user, and d
 - Webpack
 
 - Service Worker
+
+- Geaonames API
+
+- Weather API
+
+- Pixabay API
 
 
 ***

@@ -16,4 +16,11 @@ form{
         width: 86%;
         cursor: pointer;
       }
+      #submitTrip{
+        border: none;
+        outline: none;
+        &:hover{
+          background-color: #acccfb;
+        }
+      }
 }

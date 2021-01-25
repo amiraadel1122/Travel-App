@@ -7,16 +7,19 @@ const weatherbit_apiKey = "3ffe7b05be954f998ff6267844ad7985";
 //pixabay api
 const pixabay_baseUrl = "https://pixabay.com/api/?";
 const pixbay_apiKey = "6645421-844c46144b8e37ea2e38a1070";
-
+//============= Handle trip submit
 document.getElementById("submitTrip").addEventListener("click", submitTrip);
 let departure_date;
-
-let futureWeather = [];
+let return_date;
 async function submitTrip(e) {
   e.preventDefault();
   let cityValue = document.getElementById("city").value;
   departure_date = document.getElementById("departure").value;
-  geoNamesDataa(cityValue)
+  return_date = document.getElementById("return").value;
+  if(!cityValue){
+    alert('Please Enter destination first!!')
+  }else{
+    geoNamesDataa(cityValue)
     .then(async (data) => {
       //  console.log(" geodata", data);
       return await postData("http://localhost:8000/geoNamesData", {
@@ -45,18 +48,20 @@ async function submitTrip(e) {
       });
     })
     .then(async () => {
-      return pixbyData(cityValue);
+      return await pixbyData(cityValue);
     })
     .then((pixaData) => {
       console.log("imageDatea", pixaData);
       return postData("http://localhost:8000/pixbayData", {
-        img: pixaData.hits[0].webformatURL,
+        image: pixaData.hits[0].webformatURL,
       });
     })
     .then(updateView())
     .then((res) => console.log("helllllooooe from client", res) || res.json())
     .catch((err) => err);
 }
+  }
+  
 //==========get geonames data
 const geoNamesDataa = async (city) => {
   try {
@@ -112,20 +117,27 @@ const postData = async (url = "", data = {}) => {
   try {
     const newData = await res.json();
     return newData;
-  } catch (err) {
+  } catch (error) {
     console.log("error", error);
   }
 };
 
+
+
 //=======Update the UI
 const updateView = async () => {
   // debugger
+let returnDate = new Date(return_date).getTime();
+let departDate = new Date(departure_date).getTime();
+
+const tripLength = returnDate - departDate ;
+const tripLengthDays = tripLength / (1000*3600*24);
   const req = await fetch("http://localhost:8000/allData");
 
   try {
     const dataa = await req.json();
     console.log("dataaaaaa", dataa);
-    document.getElementById("city-image").src = dataa[dataa.length - 1].img;
+    document.getElementById("city-image").innerHTML = `<div class="info">image of the city:</div><img src="${dataa[dataa.length - 1].image}" />`;
     document.getElementById("trip-to").innerHTML =
     document.getElementById("city").value;
     document.getElementById("dep-date").innerHTML =
@@ -135,8 +147,9 @@ const updateView = async () => {
     document.getElementById("forecast").innerHTML =
       dataa[dataa.length - 2].description;
     document.getElementById("high-temp").innerHTML =
-      dataa[dataa.length - 2].high;
-    document.getElementById("low-temp").innerHTML = dataa[dataa.length - 2].low;
+      `<span>${dataa[dataa.length - 2].high} °C</span>`;
+    document.getElementById("low-temp").innerHTML = `<span>${dataa[dataa.length - 2].low} °C</span>`;
+    document.getElementById("tripLength").innerHTML = `${tripLengthDays} Days`;
   } catch (err) {
     console.log(error);
   }
