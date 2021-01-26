@@ -5,6 +5,12 @@ import "./styles/footer.scss";
 import "./styles/form.scss";
 import "./styles/variables.scss";
 
-import { submitTripData } from "./js/app";
+import { submitTrip } from "./js/app";
 
-export { submitTripData };
+document.addEventListener('DOMContentLoaded', () => {
+    const button_submit = document.getElementById("submitTrip");
+    button_submit.addEventListener("click", submitTrip);
+});
+
+
+export { submitTrip };

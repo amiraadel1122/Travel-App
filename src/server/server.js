@@ -56,4 +56,4 @@ app.post("/pixbayData", (req, res) => {
 });
 
 
-// module.exports = server;
+module.exports = app;

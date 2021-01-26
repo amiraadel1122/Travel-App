@@ -8,7 +8,10 @@ const weatherbit_apiKey = "3ffe7b05be954f998ff6267844ad7985";
 const pixabay_baseUrl = "https://pixabay.com/api/?";
 const pixbay_apiKey = "6645421-844c46144b8e37ea2e38a1070";
 //============= Handle trip submit
-document.getElementById("submitTrip").addEventListener("click", submitTrip);
+let handleSubmit = document.getElementById("submitTrip")
+if(handleSubmit){
+  handleSubmit.addEventListener("click", submitTrip);
+}
 let departure_date;
 let return_date;
 async function submitTrip(e) {
@@ -154,3 +157,8 @@ const tripLengthDays = tripLength / (1000*3600*24);
     console.log(error);
   }
 };
+
+
+export{
+  submitTrip
+}
